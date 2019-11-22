@@ -32,4 +32,6 @@ const Home = () => (
   </div>
 )
 
+//TODO: endpoints in one file
+
 export default App;
