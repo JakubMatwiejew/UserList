@@ -36,6 +36,13 @@ class Users extends Component {
         })
     }
 
+    updateSearchPhrase = (phrase) => {
+        this.setState({
+            searchPhrase: phrase
+        })
+        this.filterResults(phrase);
+    }
+
     clearSearchPhrase = () => {
         this.searchInputChangeHandler(null)
     }
@@ -50,7 +57,7 @@ class Users extends Component {
                         filteredUsers: users.data,
                         usersFetched: true
                     })
-                }, 5000)
+                }, 2000)
             })
             .catch(err => {
                 this.setState({
@@ -70,7 +77,7 @@ class Users extends Component {
 
         if (this.state.filteredUsers.length) {
             userList = this.state.filteredUsers.map((user) => {
-                return <ListElement name={user.name} key={user.id} index={user.id} filtered={this.state.users.length !== this.state.filteredUsers.length} />
+                return <ListElement clicked={() => this.updateSearchPhrase(user.name)} name={user.name} key={user.id} index={user.id} filtered={this.state.users.length !== this.state.filteredUsers.length} />
             })
         } 
 

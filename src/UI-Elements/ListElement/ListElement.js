@@ -10,7 +10,7 @@ const ListElement = (props) => {
     }
 
     return (
-        <div className={classNames.join(' ')}>
+        <div onClick={props.clicked} className={classNames.join(' ')}>
             <p>{props.index}.</p>
             <p>{props.name}</p>
         </div>
