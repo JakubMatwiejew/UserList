@@ -74,11 +74,13 @@ class Users extends Component {
         let userList = null;
         let noResults = null;
         let loadingState = null;
+        let search = null;
 
         if (this.state.filteredUsers.length) {
             userList = this.state.filteredUsers.map((user) => {
                 return <ListElement clicked={() => this.updateSearchPhrase(user.name)} name={user.name} key={user.id} index={user.id} filtered={this.state.users.length !== this.state.filteredUsers.length} />
             })
+            search = <Search autofocus={this.state.usersFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
         } 
 
         if (!this.state.filteredUsers.length && this.state.usersFetched) {
@@ -98,7 +100,7 @@ class Users extends Component {
         return (
             <div>
                 <h1>Users list</h1>
-                <Search placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
+                {search}
                 {loadingState}
                 {userList}
                 {noResults}
