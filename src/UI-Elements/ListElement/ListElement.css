@@ -8,8 +8,10 @@
     transition: all .2s ease-in-out;
 }
 
-.list-element:hover {
-    background-color: #ccc;
+@media (hover:hover) {
+    .list-element:hover {
+        background-color: #ccc;
+    }
 }
 
 .list-element > p { font-size: 14px; margin-right: 10px }

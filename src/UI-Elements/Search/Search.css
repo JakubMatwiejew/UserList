@@ -15,3 +15,5 @@
     border: 1px solid green;
     box-shadow: 0 0 7px green;
 }
+
+input { -webkit-appearance: none; }
