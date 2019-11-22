@@ -11,7 +11,8 @@ class Users extends Component {
         searchPhrase: '',
         users: [],
         filteredUsers: [],
-        usersFetched: false
+        usersFetched: false,
+        loadingState: 'Fetching user list...'
     }
 
     searchInputChangeHandler = (event) => {
@@ -49,6 +50,11 @@ class Users extends Component {
                     })
                 }, 5000)
             })
+            .catch(err => {
+                this.setState({
+                    loadingState: 'Error while fetching users...'
+                })
+            })
     }
 
     render() {
@@ -73,7 +79,7 @@ class Users extends Component {
         }
 
         if (!this.state.usersFetched) {
-            loadingState = <LoadingState loadingState="Fetching user list..."/>
+            loadingState = <LoadingState loadingState={this.state.loadingState}/>
         }
 
         return (
