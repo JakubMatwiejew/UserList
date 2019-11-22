@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+.button {
+  outline: none;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid darkgrey;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.delete-button:hover {
+  border: 1px solid #CC6263;
+  background-color: #CC6263;
+  color: #fff;
+}

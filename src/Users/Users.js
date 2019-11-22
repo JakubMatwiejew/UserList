@@ -9,11 +9,13 @@ class Users extends Component {
         placeholder: 'Search by user name...',
         searchPhrase: '',
         users: [],
-        filteredUsers: []
+        filteredUsers: [],
+        usersFetched: false
     }
 
     searchInputChangeHandler = (event) => {
-        const phrase = event.target.value;
+
+        const phrase = event ? event.target.value : '';
         this.setState({
             searchPhrase: phrase
         })
@@ -30,12 +32,17 @@ class Users extends Component {
 
     }
 
+    clearSearchPhrase = () => {
+        this.searchInputChangeHandler(null)
+    }
+
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(users => {
                 this.setState({
                     users: users.data,
-                    filteredUsers: users.data
+                    filteredUsers: users.data,
+                    usersFetched: true
                 })
             })
     }
@@ -47,11 +54,12 @@ class Users extends Component {
             userList = this.state.filteredUsers.map((user) => {
                 return <ListElement name={user.name} key={user.id} index={user.id} filtered={this.state.users.length !== this.state.filteredUsers.length} />
             })
-        } else {
+        } else if (this.state.usersFetched) {
             userList = (
                 <div>
                     <h3>No users found...</h3>
                     <p>Try to change the search phrase!</p>
+                    <button onClick={this.clearSearchPhrase} className="button delete-button">Clear search input</button>
                 </div>
             )
         }
