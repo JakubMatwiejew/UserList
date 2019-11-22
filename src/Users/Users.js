@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ListElement from '../ui-elements/ListElement/ListElement'
-import Search from '../ui-elements/Search/Search';
+import ListElement from '../UI-Elements/ListElement/ListElement'
+import Search from '../UI-Elements/Search/Search';
 import axios from 'axios'
 
 class Users extends Component {
@@ -45,7 +45,7 @@ class Users extends Component {
 
         if (this.state.filteredUsers.length) {
             userList = this.state.filteredUsers.map((user) => {
-                return <ListElement name={user.name} key={user.id} index={user.id} />
+                return <ListElement name={user.name} key={user.id} index={user.id} filtered={this.state.users.length !== this.state.filteredUsers.length} />
             })
         } else {
             userList = (

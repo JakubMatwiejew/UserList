@@ -5,13 +5,22 @@
     margin: 10px auto;
     cursor: pointer;
     display: flex;
+    transition: all .2s ease-in-out;
 }
 
 .list-element:hover {
     background-color: #ccc;
-    transition: all .2s ease-in-out;
 }
 
 .list-element > p { font-size: 14px; margin-right: 10px }
 
 .list-element > p:first-of-type { color: grey }
+
+.is-filtered {
+    border: 1px solid green;
+}
+
+.is-filtered > p {
+    font-weight: bold
+}
+
