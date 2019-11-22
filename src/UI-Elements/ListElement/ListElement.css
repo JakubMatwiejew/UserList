@@ -14,15 +14,23 @@
     }
 }
 
-.list-element > p { font-size: 14px; margin-right: 10px }
+.list-element > p { 
+    font-size: 14px;
+}
 
-.list-element > p:first-of-type { color: grey }
+.list-element > p:not(:first-of-type) {
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+
+.list-element > p:first-of-type { color: grey; margin-right: 10px; }
 
 .is-filtered {
     border: 1px solid green;
 }
 
 .is-filtered > p {
-    font-weight: bold
+    font-weight: bold;
 }
 
