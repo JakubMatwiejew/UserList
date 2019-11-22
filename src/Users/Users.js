@@ -16,29 +16,31 @@ class Users extends Component {
     }
 
     searchInputChangeHandler = (event) => {
-
         const phrase = event ? event.target.value : '';
         this.setState({
             searchPhrase: phrase
         })
 
+        this.filterResults(phrase);
+    }
+
+    filterResults = (searchPhrase) => {
         let filteredList = this.state.users;
 
         filteredList = filteredList.filter((user => {
-            return user.name.toLowerCase().search(phrase.toLowerCase()) !== -1;
+            return user.name.toLowerCase().search(searchPhrase.toLowerCase()) !== -1;
         }));
 
         this.setState({
             filteredUsers: filteredList
         })
-
     }
 
     clearSearchPhrase = () => {
         this.searchInputChangeHandler(null)
     }
 
-    componentDidMount() {
+    fetchUserList = () => {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(users => {
                 // setTimeout to simulate long api response and show loading state
@@ -55,6 +57,10 @@ class Users extends Component {
                     loadingState: 'Error while fetching users...'
                 })
             })
+    }
+
+    componentDidMount() {
+        this.fetchUserList();
     }
 
     render() {
