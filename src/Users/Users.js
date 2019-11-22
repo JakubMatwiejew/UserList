@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ListElement from '../UI-Elements/ListElement/ListElement'
 import Search from '../UI-Elements/Search/Search';
 import axios from 'axios'
+import LoadingState from '../UI-Elements/LoadingState/LoadingState';
 
 class Users extends Component {
 
@@ -39,23 +40,30 @@ class Users extends Component {
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(users => {
-                this.setState({
-                    users: users.data,
-                    filteredUsers: users.data,
-                    usersFetched: true
-                })
+                // setTimeout to simulate long api response and show loading state
+                setTimeout(() => {
+                    this.setState({
+                        users: users.data,
+                        filteredUsers: users.data,
+                        usersFetched: true
+                    })
+                }, 5000)
             })
     }
 
     render() {
         let userList = null;
+        let noResults = null;
+        let loadingState = null;
 
         if (this.state.filteredUsers.length) {
             userList = this.state.filteredUsers.map((user) => {
                 return <ListElement name={user.name} key={user.id} index={user.id} filtered={this.state.users.length !== this.state.filteredUsers.length} />
             })
-        } else if (this.state.usersFetched) {
-            userList = (
+        } 
+
+        if (!this.state.filteredUsers.length && this.state.usersFetched) {
+            noResults = (
                 <div>
                     <h3>No users found...</h3>
                     <p>Try to change the search phrase!</p>
@@ -64,11 +72,17 @@ class Users extends Component {
             )
         }
 
+        if (!this.state.usersFetched) {
+            loadingState = <LoadingState loadingState="Fetching user list..."/>
+        }
+
         return (
             <div>
                 <h1>Users list</h1>
                 <Search placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
+                {loadingState}
                 {userList}
+                {noResults}
             </div>
         )
     }
