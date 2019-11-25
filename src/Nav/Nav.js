@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import Button from '../UI-Elements/Button/Button';
 
 const Nav = () => {
     return (
         <div>
             <h1>What do you want to fetch?</h1>
             <div className="nav-buttons">
-            <Link to="/users">
-                <button style={{marginRight: "30px"}} className="button nav-button">Users</button>
+            <Link className="first" to="/users">
+                <Button text="Users" type="nav-button"/>
             </Link>
             <Link to="posts">
-                <button className="button nav-button">Posts</button>
+                <Button text="Posts" type="nav-button"/>
             </Link>
             </div>
         </div>

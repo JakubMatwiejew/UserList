@@ -3,6 +3,7 @@ import ListElement from '../UI-Elements/ListElement/ListElement'
 import Search from '../UI-Elements/Search/Search';
 import axios from 'axios'
 import LoadingState from '../UI-Elements/LoadingState/LoadingState';
+import Button from '../UI-Elements/Button/Button';
 
 class Users extends Component {
 
@@ -88,7 +89,7 @@ class Users extends Component {
                 <div>
                     <h3>No users found...</h3>
                     <p>Try to change the search phrase!</p>
-                    <button onClick={this.clearSearchPhrase} className="button delete-button">Clear search input</button>
+                    <Button clicked={this.clearSearchPhrase} type="delete-button" text="Clear search input"/>
                 </div>
             )
         }
