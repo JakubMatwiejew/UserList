@@ -81,8 +81,11 @@ class Users extends Component {
             userList = this.state.filteredUsers.map((user) => {
                 return <ListElement clicked={() => this.updateSearchPhrase(user.name)} name={user.name} key={user.id} index={user.id} filtered={this.state.users.length !== this.state.filteredUsers.length} />
             })
-            search = <Search autofocus={this.state.usersFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
         } 
+
+        if (this.state.usersFetched) {
+            search = <Search autofocus={this.state.usersFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
+        }
 
         if (!this.state.filteredUsers.length && this.state.usersFetched) {
             noResults = (

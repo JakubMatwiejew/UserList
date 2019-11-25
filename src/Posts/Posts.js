@@ -81,8 +81,11 @@ class Posts extends Component {
             postList = this.state.filteredPosts.map((post) => {
                 return <ListElement clicked={() => this.updateSearchPhrase(post.title)} name={post.title} key={post.id} index={post.id} filtered={this.state.posts.length !== this.state.filteredPosts.length} />
             })
-            search = <Search autofocus={this.state.postsFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
         } 
+
+        if (this.state.postsFetched) {
+            search = <Search autofocus={this.state.postsFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
+        }
 
         if (!this.state.filteredPosts.length && this.state.postsFetched) {
             noResults = (

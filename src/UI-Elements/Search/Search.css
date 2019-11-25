@@ -19,4 +19,10 @@
     box-shadow: 0 0 7px green;
 }
 
+.search-input.input-warning {
+    background-color: #ccc;
+    border: 1px solid #CC6263;
+    box-shadow: 0 0 7px #CC6263;
+}
+
 input { -webkit-appearance: none; }
