@@ -84,7 +84,7 @@ class Posts extends Component {
         } 
 
         if (this.state.postsFetched) {
-            search = <Search autofocus={this.state.postsFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
+            search = <Search warning={this.state.filteredPosts.length} autofocus={this.state.postsFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
         }
 
         if (!this.state.filteredPosts.length && this.state.postsFetched) {

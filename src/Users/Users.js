@@ -84,7 +84,7 @@ class Users extends Component {
         } 
 
         if (this.state.usersFetched) {
-            search = <Search autofocus={this.state.usersFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
+            search = <Search warning={this.state.filteredUsers.length} autofocus={this.state.usersFetched} placeholder={this.state.placeholder} searchPhrase={this.state.searchPhrase} change={this.searchInputChangeHandler}/>
         }
 
         if (!this.state.filteredUsers.length && this.state.usersFetched) {

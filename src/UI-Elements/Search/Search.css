@@ -19,7 +19,7 @@
     box-shadow: 0 0 7px green;
 }
 
-.search-input.input-warning {
+.search-input.input-warning > input:focus {
     background-color: #ccc;
     border: 1px solid #CC6263;
     box-shadow: 0 0 7px #CC6263;
